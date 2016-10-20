@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Enver&#39;s Note</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-10-20T14:18:37.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Bo-Hung Liou</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Good morning</title>
+    <link href="http://yoursite.com/2016/10/20/Good-morning/"/>
+    <id>http://yoursite.com/2016/10/20/Good-morning/</id>
+    <published>2016-10-20T14:18:37.000Z</published>
+    <updated>2016-10-20T14:18:37.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Rails即戰力課程第二週筆記</title>
+    <link href="http://yoursite.com/2016/10/19/Rails%E5%8D%B3%E6%88%B0%E5%8A%9B%E8%AA%B2%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%80%B1%E7%AD%86%E8%A8%98/"/>
+    <id>http://yoursite.com/2016/10/19/Rails即戰力課程第二週筆記/</id>
+    <published>2016-10-19T13:48:56.000Z</published>
+    <updated>2016-10-20T13:16:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="before-action-的使用時機："><a href="#before-action-的使用時機：" class="headerlink" title="before_action 的使用時機："></a>before_action 的使用時機：</h2><ul>
+<li><p>before_action 是什麼？<br>定義在進入Action之前，執行特定的方法，用以減少controller裡面重複的程式碼。<br>Rails在run controller下的 action 前要先跑指定的method。</p>
+</li>
+<li><p>為什麼要用 before_action？<br>目的在於簡化程式碼，以利程式碼的可讀性和加快程式執行的速度。</p>
+</li>
+<li><p>如何使用 before_action？<br>在controller裡面，所有方法定義Ｍethods之前使用。</p>
+<figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">before_action <span class="symbol">:authenticate_user!</span> <span class="symbol">only:</span> [<span class="symbol">:edit</span>]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>程式碼在執行methods之前會先執行身份驗證的機制，可以利用only,except此兩個關鍵字來限定哪些Action要執行，上述程式碼僅有edit所定義的方法才會執行身份驗證。</p>
+<h2 id="session-與-cookie-的差別："><a href="#session-與-cookie-的差別：" class="headerlink" title="session 與 cookie 的差別："></a>session 與 cookie 的差別：</h2><ul>
+<li>什麼是 session 跟 cookie？</li>
+</ul>
+<blockquote>
+<p>看演唱會或是去遊樂園玩常常會發生一種情況，就是入場以後要暫時出場，這時候工作人員通常會給你蓋個手章，用來註記你曾經入場過，基本上 Cookies 的功用就是這個手章，只要使用者進到我們的網站，我們就幫他儲存一個 Cookies ，下次當使用者再度造訪時我們就可以由 Cookies 得知使用者的資訊。有些遊樂園的手章上會標記當天的入園時間，以免有人回家不洗澡隔天又來玩一次，而 cookies 記錄這個時間的方法就是以 key/value 的形式儲存在使用者的瀏覽器中，但 Cookies 屬於沒有加密的公開檔案，所以不建議儲存敏感資料。</p>
+<p>相較於 Cookies 存在 Client 端， Session 則是存在 Server 的資料，通常與 Cookies 相呼應。當使用者造訪我們的網站時，我們由伺服器產生 session id (32 byte long MD5 hash value)，並傳送存有這個 session id 的 cookie 給瀏覽器儲存，之後使用者造訪我們網站時，只需要比對 cookies 上的 session id 和 session 裡的 session id 就可以知道使用者身份，大部份的網站也是運用此原理實作儲存 User 登入狀態的機制。這樣做的好處是若有人劫取到使用者的 Cookies 資料也無法得知資料內容，但是仍有 Hijacking 攻擊的疑慮。</p>
+</blockquote>
+<ul>
+<li><p>為什麼要用 session 跟 cookie？<br>用來儲存資料的手段，常用來作為使用者是否登入的方法。</p>
+</li>
+<li><p>Rails 內如何操作 session?<br>在 Rails 內只要用 <code>session[:session_name]</code>的 instance method 就可以取得 session 的特定資料了。<br>若要新增或是覆蓋現有的 session 資料，只要用<code>session[:session_name] = ＹＹＹ</code>就可以了<br>若要刪除特定的 session 值，只要下<code>session_delete(:session_name)</code></p>
+</li>
+</ul>
+<h2 id="狀態機："><a href="#狀態機：" class="headerlink" title="狀態機："></a>狀態機：</h2><ul>
+<li><p>什麼是狀態機？<br>可以透過aasm狀態機去做物件狀態的切換，在EC網站下就是去管理及切換已下單,已付款,已出貨,出貨中,退貨,取消訂單等狀態。</p>
+</li>
+<li><p>為什麼要使用狀態機去設計訂單狀態？<br>避免手動操作狀態而使狀態混亂，在設定好的規則下讓狀態機來做狀態的管理及切換。</p>
+</li>
+<li><p>如何在 Rails 內設計狀態機機制？(以Ec-shop網站為例)</p>
+<ol>
+<li>安裝 <code>gem &quot;aasm&quot;</code></li>
+<li>order 新增 aasm_state 欄位</li>
+<li>設定訂單狀態機制</li>
+<li>用 AASM 的機制設定訂單付款</li>
+</ol>
+</li>
+</ul>
+<h2 id="如何讓-strong-parameter-接受-nested-attributes："><a href="#如何讓-strong-parameter-接受-nested-attributes：" class="headerlink" title="如何讓 strong_parameter 接受 nested_attributes："></a>如何讓 strong_parameter 接受 nested_attributes：</h2><p>step 1:在Model中，宣告我們可以接受的Attributes。 （model:Photo.rb,Product.rb）<br>step 2:在Controller中，指定接受的Attributes。 （products_controller.rb）</p>
+<h2 id="board-has-many-posts-新造物件宣告方式是：-post-boards-posts-build-。那如果-book-has-one-author，請問要怎麼宣告？"><a href="#board-has-many-posts-新造物件宣告方式是：-post-boards-posts-build-。那如果-book-has-one-author，請問要怎麼宣告？" class="headerlink" title="board has_many posts, 新造物件宣告方式是： @post = @boards.posts.build 。那如果 book has_one :author，請問要怎麼宣告？"></a>board has_many posts, 新造物件宣告方式是： @post = @boards.posts.build 。那如果 book has_one :author，請問要怎麼宣告？</h2><p>@author=@book.build.author</p>
+<h2 id="after-create-是一種-model-callbacks-請問-model-有多少種-call-backs-請列出來"><a href="#after-create-是一種-model-callbacks-請問-model-有多少種-call-backs-請列出來" class="headerlink" title="after_create 是一種 model callbacks, 請問 model 有多少種 call backs 請列出來"></a>after_create 是一種 model callbacks, 請問 model 有多少種 call backs 請列出來</h2><ol>
+<li><code>before_validation</code></li>
+<li><code>before_create</code></li>
+<li><code>before_save</code></li>
+<li><code>after_validation</code></li>
+<li><code>after_create</code></li>
+<li><code>after_save</code></li>
+<li><code>after_commit</code></li>
+</ol>
+<h2 id="in-controller-render-與-redirect-to-的差異："><a href="#in-controller-render-與-redirect-to-的差異：" class="headerlink" title="(in controller ) render 與 redirect_to 的差異："></a>(in controller ) render 與 redirect_to 的差異：</h2><p><code>render</code>: 不執行action，不改變url的狀態下，直接套用某一個view。<br><code>redirect_to</code>:會執行指定頁面的controller action，直接轉址到某個url。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;before-action-的使用時機：&quot;&gt;&lt;a href=&quot;#before-action-的使用時機：&quot; class=&quot;headerlink&quot; title=&quot;before_action 的使用時機：&quot;&gt;&lt;/a&gt;before_action 的使用時機：&lt;/h2&gt;&lt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2016/10/19/hello-world/"/>
+    <id>http://yoursite.com/2016/10/19/hello-world/</id>
+    <published>2016-10-19T12:51:19.000Z</published>
+    <updated>2016-10-19T12:51:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
