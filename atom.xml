@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bohung.github.io/"/>
-  <updated>2016-10-21T11:09:39.000Z</updated>
+  <updated>2016-10-21T11:13:24.000Z</updated>
   <id>https://bohung.github.io/</id>
   
   <author>
@@ -20,12 +20,14 @@
     <link href="https://bohung.github.io/2016/10/20/Rails%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%95%B4%E7%90%86%E6%8A%80%E5%B7%A7/"/>
     <id>https://bohung.github.io/2016/10/20/Rails程式碼整理技巧/</id>
     <published>2016-10-20T14:18:37.000Z</published>
-    <updated>2016-10-21T11:09:39.000Z</updated>
+    <updated>2016-10-21T11:13:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>#View:</p>
-<p>常見需要用Helper包裝的地方:</p>
-<p>#1標題#2敘述#3連結</p>
-<p>#4圖片#5按鈕</p>
+<ol>
+<li>List Item #1</li>
+<li>List Item #2</li>
+<li>List Item #3<br>常見需要用Helper包裝的地方:<br>#1標題#2敘述#3連結<br>#4圖片#5按鈕</li>
+</ol>
 <p>##利用系統的help,整理code</p>
 <p>時間格式<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:long) %&gt; &lt;/td&gt;</div><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:short) %&gt; &lt;/td&gt;</div></pre></td></tr></table></figure></p>
 <p>post 的 content 能自動斷行<br><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= simple_format(post.content) %&gt; &lt;<span class="regexp">/td&gt;</span></div></pre></td></tr></table></figure></p>
@@ -37,11 +39,12 @@
     <summary type="html">
     
       &lt;p&gt;#View:&lt;/p&gt;
-&lt;p&gt;常見需要用Helper包裝的地方:&lt;/p&gt;
-&lt;p&gt;#1標題#2敘述#3連結&lt;/p&gt;
-&lt;p&gt;#4圖片#5按鈕&lt;/p&gt;
-&lt;p&gt;##利用系統的help,整理code&lt;/p&gt;
-&lt;p&gt;時間格式&lt;br&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;t
+&lt;ol&gt;
+&lt;li&gt;List Item #1&lt;/li&gt;
+&lt;li&gt;List Item #2&lt;/li&gt;
+&lt;li&gt;List Item #3&lt;br&gt;常見需要用Helper包裝的地方:&lt;br&gt;#1標題#2敘述#3連結&lt;br&gt;#4圖片#5按鈕&lt;/li&gt;
+&lt;/ol&gt;
+
     
     </summary>
     
