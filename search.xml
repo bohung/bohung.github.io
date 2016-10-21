@@ -4,9 +4,9 @@
   
     
     <entry>
-      <title><![CDATA[Good morning]]></title>
-      <url>https://bohung.github.io/2016/10/20/Good-morning/</url>
-      <content type="text"></content>
+      <title><![CDATA[Rails程式碼整理技巧]]></title>
+      <url>https://bohung.github.io/2016/10/20/Rails%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%95%B4%E7%90%86%E6%8A%80%E5%B7%A7/</url>
+      <content type="text"><![CDATA[#View: 常見需要用Helper包裝的地方: #1標題#2敘述#3連結 #4圖片#5按鈕 ##利用系統的help,整理code 時間格式12&lt;td&gt; &lt;%= post.updated_at.to_s(:long) %&gt; &lt;/td&gt;&lt;td&gt; &lt;%= post.updated_at.to_s(:short) %&gt; &lt;/td&gt; post 的 content 能自動斷行1&lt;td&gt; &lt;%= simple_format(post.content) %&gt; &lt;/td&gt; 標題太長就斷行用 …… 來顯示1&lt;td&gt; &lt;%= link_to(truncate(group.title, length: 15 ), group_path(group)) %&gt; &lt;/td&gt; ##自己撰寫help, 包裝html123def render_post_content(post) simple_format(truncate(post.content, lenth: 100)) #內容斷行,只顯示頭一百字end #Controller:]]></content>
     </entry>
 
     
