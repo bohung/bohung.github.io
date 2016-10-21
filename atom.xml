@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bohung.github.io/"/>
-  <updated>2016-10-21T11:19:53.000Z</updated>
+  <updated>2016-10-21T11:23:54.000Z</updated>
   <id>https://bohung.github.io/</id>
   
   <author>
@@ -20,22 +20,19 @@
     <link href="https://bohung.github.io/2016/10/20/Rails%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%95%B4%E7%90%86%E6%8A%80%E5%B7%A7/"/>
     <id>https://bohung.github.io/2016/10/20/Rails程式碼整理技巧/</id>
     <published>2016-10-20T14:18:37.000Z</published>
-    <updated>2016-10-21T11:19:53.000Z</updated>
+    <updated>2016-10-21T11:23:54.000Z</updated>
     
-    <content type="html"><![CDATA[<p>#View:<br><strong>寫 View 時，複雜邏輯區塊使用 Helper 包裝</strong><br>原因：邏輯清楚 程式碼可以「自己敘述自己」</p>
+    <content type="html"><![CDATA[<h1 id="View"><a href="#View" class="headerlink" title="View:"></a>View:</h1><p><strong>寫 View 時，複雜邏輯區塊使用 Helper 包裝</strong><br>原因：邏輯清楚 程式碼可以「自己敘述自己」</p>
 <p>常見需要用 Helper 包裝的地方:<br>1.標題  2.敘述 3.連結 4.圖片 5.按鈕</p>
-<p>##利用系統的help,整理code</p>
-<p>時間格式<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:long) %&gt; &lt;/td&gt;</div><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:short) %&gt; &lt;/td&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="利用系統的help-整理code"><a href="#利用系統的help-整理code" class="headerlink" title="利用系統的help,整理code"></a>利用系統的help,整理code</h2><p>時間格式<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:long) %&gt; &lt;/td&gt;</div><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:short) %&gt; &lt;/td&gt;</div></pre></td></tr></table></figure></p>
 <p>post 的 content 能自動斷行<br><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= simple_format(post.content) %&gt; &lt;<span class="regexp">/td&gt;</span></div></pre></td></tr></table></figure></p>
 <p>標題太長就斷行用 …… 來顯示<br><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt;  &lt;%= link_to(truncate(group.title, <span class="symbol">length:</span> <span class="number">15</span> ), group_path(group)) %&gt; &lt;<span class="regexp">/td&gt;</span></div></pre></td></tr></table></figure></p>
-<p>##自己撰寫help, 包裝html<br><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">render_post_content</span><span class="params">(post)</span></span></div><div class="line">  simple_format(truncate(post.content, <span class="symbol">lenth:</span> <span class="number">100</span>)) <span class="comment">#內容斷行,只顯示頭一百字</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
-<p>#Controller:</p>
-]]></content>
+<h2 id="自己撰寫help-包裝html"><a href="#自己撰寫help-包裝html" class="headerlink" title="自己撰寫help, 包裝html"></a>自己撰寫help, 包裝html</h2><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">render_post_content</span><span class="params">(post)</span></span></div><div class="line">  simple_format(truncate(post.content, <span class="symbol">lenth:</span> <span class="number">100</span>)) <span class="comment">#內容斷行,只顯示頭一百字</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<h1 id="Controller"><a href="#Controller" class="headerlink" title="Controller:"></a>Controller:</h1>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;#View:&lt;br&gt;&lt;strong&gt;寫 View 時，複雜邏輯區塊使用 Helper 包裝&lt;/strong&gt;&lt;br&gt;原因：邏輯清楚 程式碼可以「自己敘述自己」&lt;/p&gt;
-&lt;p&gt;常見需要用 Helper 包裝的地方:&lt;br&gt;1.標題  2.敘述 3.連結 4.圖片 5.按鈕&lt;/
+      &lt;h1 id=&quot;View&quot;&gt;&lt;a href=&quot;#View&quot; class=&quot;headerlink&quot; title=&quot;View:&quot;&gt;&lt;/a&gt;View:&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;寫 View 時，複雜邏輯區塊使用 Helper 包裝&lt;/strong&gt;&lt;br&gt;原因：邏輯清楚 程式碼可
     
     </summary>
     
