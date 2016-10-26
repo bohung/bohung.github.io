@@ -195,46 +195,11 @@
   </entry>
   
   <entry>
-    <title>Rails程式碼整理技巧</title>
-    <link href="https://bohung.github.io/2016/10/20/Rails%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%95%B4%E7%90%86%E6%8A%80%E5%B7%A7/"/>
-    <id>https://bohung.github.io/2016/10/20/Rails程式碼整理技巧/</id>
-    <published>2016-10-20T14:18:37.000Z</published>
-    <updated>2016-10-21T12:53:41.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="View"><a href="#View" class="headerlink" title="View:"></a>View:</h1><p><strong>寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝</strong><br>原因：邏輯清楚，程式碼可以「自己敘述自己」</p>
-<p>常見需要用 Helper 包裝的地方:<br>1.標題  2.敘述 3.連結 4.圖片 5.按鈕</p>
-<h2 id="利用系統的help-整理code"><a href="#利用系統的help-整理code" class="headerlink" title="利用系統的help,整理code"></a>利用系統的help,整理code</h2><p>時間格式<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:long) %&gt; &lt;/td&gt;</div><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:short) %&gt; &lt;/td&gt;</div></pre></td></tr></table></figure></p>
-<p>post 的 content 能自動斷行<br><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= simple_format(post.content) %&gt; &lt;<span class="regexp">/td&gt;</span></div></pre></td></tr></table></figure></p>
-<p>標題太長就斷行用 …… 來顯示<br><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt;  &lt;%= link_to(truncate(group.title, <span class="symbol">length:</span> <span class="number">15</span> ), group_path(group)) %&gt; &lt;<span class="regexp">/td&gt;</span></div></pre></td></tr></table></figure></p>
-<h2 id="自己撰寫help-包裝html"><a href="#自己撰寫help-包裝html" class="headerlink" title="自己撰寫help, 包裝html"></a>自己撰寫help, 包裝html</h2><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">render_post_content</span><span class="params">(post)</span></span></div><div class="line">  simple_format(truncate(post.content, <span class="symbol">lenth:</span> <span class="number">100</span>)) <span class="comment">#內容斷行,只顯示頭一百字</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<h2 id="Partial"><a href="#Partial" class="headerlink" title="Partial"></a>Partial</h2><h1 id="Controller、Model"><a href="#Controller、Model" class="headerlink" title="Controller、Model:"></a>Controller、Model:</h1><p><strong>繼承、混入(module)</strong><br>如果 Model 超過 3 個 PageDown, 拆 Module<br>如果 Controller 每個 action 都有重複的 code, 使用 <code>before_action</code></p>
-<p>如果多個 Controller 有同樣的少樣幾行 action，可以利用繼承來整理code</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-class Admin::OrdersController &lt; ApplicationController</div><div class="line">-  layout `&lt;blink&gt;` &quot;admin&quot;</div><div class="line">-  before_action :authenticate_user!</div><div class="line">-  before_action :admin_required</div><div class="line"></div><div class="line">+class Admin::OrdersController &lt; AdminController</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-class Admin::ProductsController &lt; ApplicationController</div><div class="line">-  layout &quot;admin&quot;</div><div class="line">-  before_action :authenticate_user!</div><div class="line">-  before_action :admin_required</div><div class="line"></div><div class="line">+class Admin::ProductsController &lt; AdminController</div></pre></td></tr></table></figure>
-<p>新增 admin_controller.rb 讓上述兩個controller來繼承<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class AdminController &lt; ApplicationController</div><div class="line">  layout &quot;admin&quot;</div><div class="line">  before_action :authenticate_user!</div><div class="line">  before_action :admin_required</div></pre></td></tr></table></figure></p>
-<pre><code class="rb">
-</code></pre>
-<h2 id="Service-Objectl："><a href="#Service-Objectl：" class="headerlink" title="Service Objectl："></a>Service Objectl：</h2><pre><code>- method邏輯極其複雜的時候
-- 跨Model使用，無法特別歸類於特定Model
-- 與外部服務有較多關連 - 並非重要功能
-- 同一種method有許多類似的使用方法
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;View&quot;&gt;&lt;a href=&quot;#View&quot; class=&quot;headerlink&quot; title=&quot;View:&quot;&gt;&lt;/a&gt;View:&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝&lt;/stro
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Rails即戰力課程第二週筆記</title>
-    <link href="https://bohung.github.io/2016/10/19/Rails%E5%8D%B3%E6%88%B0%E5%8A%9B%E8%AA%B2%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%80%B1%E7%AD%86%E8%A8%98/"/>
-    <id>https://bohung.github.io/2016/10/19/Rails即戰力課程第二週筆記/</id>
-    <published>2016-10-19T13:48:56.000Z</published>
-    <updated>2016-10-20T13:16:15.000Z</updated>
+    <link href="https://bohung.github.io/2016/10/26/Rails%E5%8D%B3%E6%88%B0%E5%8A%9B%E8%AA%B2%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%80%B1%E7%AD%86%E8%A8%98/"/>
+    <id>https://bohung.github.io/2016/10/26/Rails即戰力課程第二週筆記/</id>
+    <published>2016-10-26T12:00:55.000Z</published>
+    <updated>2016-10-26T12:36:14.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="before-action-的使用時機："><a href="#before-action-的使用時機：" class="headerlink" title="before_action 的使用時機："></a>before_action 的使用時機：</h2><ul>
 <li><p>before_action 是什麼？<br>定義在進入Action之前，執行特定的方法，用以減少controller裡面重複的程式碼。<br>Rails在run controller下的 action 前要先跑指定的method。</p>
@@ -290,6 +255,41 @@
     <summary type="html">
     
       &lt;h2 id=&quot;before-action-的使用時機：&quot;&gt;&lt;a href=&quot;#before-action-的使用時機：&quot; class=&quot;headerlink&quot; title=&quot;before_action 的使用時機：&quot;&gt;&lt;/a&gt;before_action 的使用時機：&lt;/h2&gt;&lt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Rails程式碼整理技巧</title>
+    <link href="https://bohung.github.io/2016/10/20/Rails%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%95%B4%E7%90%86%E6%8A%80%E5%B7%A7/"/>
+    <id>https://bohung.github.io/2016/10/20/Rails程式碼整理技巧/</id>
+    <published>2016-10-20T14:18:37.000Z</published>
+    <updated>2016-10-21T12:53:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="View"><a href="#View" class="headerlink" title="View:"></a>View:</h1><p><strong>寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝</strong><br>原因：邏輯清楚，程式碼可以「自己敘述自己」</p>
+<p>常見需要用 Helper 包裝的地方:<br>1.標題  2.敘述 3.連結 4.圖片 5.按鈕</p>
+<h2 id="利用系統的help-整理code"><a href="#利用系統的help-整理code" class="headerlink" title="利用系統的help,整理code"></a>利用系統的help,整理code</h2><p>時間格式<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:long) %&gt; &lt;/td&gt;</div><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:short) %&gt; &lt;/td&gt;</div></pre></td></tr></table></figure></p>
+<p>post 的 content 能自動斷行<br><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= simple_format(post.content) %&gt; &lt;<span class="regexp">/td&gt;</span></div></pre></td></tr></table></figure></p>
+<p>標題太長就斷行用 …… 來顯示<br><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt;  &lt;%= link_to(truncate(group.title, <span class="symbol">length:</span> <span class="number">15</span> ), group_path(group)) %&gt; &lt;<span class="regexp">/td&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="自己撰寫help-包裝html"><a href="#自己撰寫help-包裝html" class="headerlink" title="自己撰寫help, 包裝html"></a>自己撰寫help, 包裝html</h2><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">render_post_content</span><span class="params">(post)</span></span></div><div class="line">  simple_format(truncate(post.content, <span class="symbol">lenth:</span> <span class="number">100</span>)) <span class="comment">#內容斷行,只顯示頭一百字</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<h2 id="Partial"><a href="#Partial" class="headerlink" title="Partial"></a>Partial</h2><h1 id="Controller、Model"><a href="#Controller、Model" class="headerlink" title="Controller、Model:"></a>Controller、Model:</h1><p><strong>繼承、混入(module)</strong><br>如果 Model 超過 3 個 PageDown, 拆 Module<br>如果 Controller 每個 action 都有重複的 code, 使用 <code>before_action</code></p>
+<p>如果多個 Controller 有同樣的少樣幾行 action，可以利用繼承來整理code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-class Admin::OrdersController &lt; ApplicationController</div><div class="line">-  layout `&lt;blink&gt;` &quot;admin&quot;</div><div class="line">-  before_action :authenticate_user!</div><div class="line">-  before_action :admin_required</div><div class="line"></div><div class="line">+class Admin::OrdersController &lt; AdminController</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-class Admin::ProductsController &lt; ApplicationController</div><div class="line">-  layout &quot;admin&quot;</div><div class="line">-  before_action :authenticate_user!</div><div class="line">-  before_action :admin_required</div><div class="line"></div><div class="line">+class Admin::ProductsController &lt; AdminController</div></pre></td></tr></table></figure>
+<p>新增 admin_controller.rb 讓上述兩個controller來繼承<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class AdminController &lt; ApplicationController</div><div class="line">  layout &quot;admin&quot;</div><div class="line">  before_action :authenticate_user!</div><div class="line">  before_action :admin_required</div></pre></td></tr></table></figure></p>
+<pre><code class="rb">
+</code></pre>
+<h2 id="Service-Objectl："><a href="#Service-Objectl：" class="headerlink" title="Service Objectl："></a>Service Objectl：</h2><pre><code>- method邏輯極其複雜的時候
+- 跨Model使用，無法特別歸類於特定Model
+- 與外部服務有較多關連 - 並非重要功能
+- 同一種method有許多類似的使用方法
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;View&quot;&gt;&lt;a href=&quot;#View&quot; class=&quot;headerlink&quot; title=&quot;View:&quot;&gt;&lt;/a&gt;View:&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝&lt;/stro
     
     </summary>
     
