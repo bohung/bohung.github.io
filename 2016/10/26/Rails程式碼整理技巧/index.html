@@ -86,19 +86,22 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝原因：邏輯清楚，程式碼可以「自己敘述自己」
+常見需要用 Helper 包裝的地方:1.標題  2.敘述 3.連結 4.圖片 5.按鈕
+利用系統的help,整理code時間格式12&amp;lt;td&amp;gt; &amp;lt;%= post.updated_at.to_s(:long) %&amp;gt; &amp;lt;/td&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://bohung.github.io/2016/10/19/hello-world/index.html">
+<meta property="og:title" content="Rails程式碼整理技巧">
+<meta property="og:url" content="https://bohung.github.io/2016/10/26/Rails程式碼整理技巧/index.html">
 <meta property="og:site_name" content="Enver's Note">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-10-19T12:51:19.000Z">
+<meta property="og:description" content="View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝原因：邏輯清楚，程式碼可以「自己敘述自己」
+常見需要用 Helper 包裝的地方:1.標題  2.敘述 3.連結 4.圖片 5.按鈕
+利用系統的help,整理code時間格式12&amp;lt;td&amp;gt; &amp;lt;%= post.updated_at.to_s(:long) %&amp;gt; &amp;lt;/td&amp;">
+<meta property="og:updated_time" content="2016-10-26T12:53:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Rails程式碼整理技巧">
+<meta name="twitter:description" content="View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝原因：邏輯清楚，程式碼可以「自己敘述自己」
+常見需要用 Helper 包裝的地方:1.標題  2.敘述 3.連結 4.圖片 5.按鈕
+利用系統的help,整理code時間格式12&amp;lt;td&amp;gt; &amp;lt;%= post.updated_at.to_s(:long) %&amp;gt; &amp;lt;/td&amp;">
 
 
 
@@ -119,10 +122,10 @@ Quick">
 
 
 
-  <link rel="canonical" href="https://bohung.github.io/2016/10/19/hello-world/"/>
+  <link rel="canonical" href="https://bohung.github.io/2016/10/26/Rails程式碼整理技巧/"/>
 
 
-  <title> Hello World | Enver's Note </title>
+  <title> Rails程式碼整理技巧 | Enver's Note </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-tw">
@@ -255,7 +258,7 @@ Quick">
             
             
               
-                Hello World
+                Rails程式碼整理技巧
               
             
           </h1>
@@ -267,8 +270,8 @@ Quick">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-10-19T20:51:19+08:00" content="2016-10-19">
-              2016-10-19
+            <time itemprop="dateCreated" datetime="2016-10-26T20:52:32+08:00" content="2016-10-26">
+              2016-10-26
             </time>
           </span>
 
@@ -295,16 +298,22 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        <h1 id="View"><a href="#View" class="headerlink" title="View:"></a>View:</h1><p><strong>寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝</strong><br>原因：邏輯清楚，程式碼可以「自己敘述自己」</p>
+<p>常見需要用 Helper 包裝的地方:<br>1.標題  2.敘述 3.連結 4.圖片 5.按鈕</p>
+<h2 id="利用系統的help-整理code"><a href="#利用系統的help-整理code" class="headerlink" title="利用系統的help,整理code"></a>利用系統的help,整理code</h2><p>時間格式<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:long) %&gt; &lt;/td&gt;</div><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:short) %&gt; &lt;/td&gt;</div></pre></td></tr></table></figure></p>
+<p>post 的 content 能自動斷行<br><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= simple_format(post.content) %&gt; &lt;<span class="regexp">/td&gt;</span></div></pre></td></tr></table></figure></p>
+<p>標題太長就斷行用 …… 來顯示<br><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt;  &lt;%= link_to(truncate(group.title, <span class="symbol">length:</span> <span class="number">15</span> ), group_path(group)) %&gt; &lt;<span class="regexp">/td&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="自己撰寫help-包裝html"><a href="#自己撰寫help-包裝html" class="headerlink" title="自己撰寫help, 包裝html"></a>自己撰寫help, 包裝html</h2><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">render_post_content</span><span class="params">(post)</span></span></div><div class="line">  simple_format(truncate(post.content, <span class="symbol">lenth:</span> <span class="number">100</span>)) <span class="comment">#內容斷行,只顯示頭一百字</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<h2 id="Partial"><a href="#Partial" class="headerlink" title="Partial"></a>Partial</h2><h1 id="Controller、Model"><a href="#Controller、Model" class="headerlink" title="Controller、Model:"></a>Controller、Model:</h1><p><strong>繼承、混入(module)</strong><br>如果 Model 超過 3 個 PageDown, 拆 Module<br>如果 Controller 每個 action 都有重複的 code, 使用 <code>before_action</code></p>
+<p>如果多個 Controller 有同樣的少樣幾行 action，可以利用繼承來整理code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-class Admin::OrdersController &lt; ApplicationController</div><div class="line">-  layout `&lt;blink&gt;` &quot;admin&quot;</div><div class="line">-  before_action :authenticate_user!</div><div class="line">-  before_action :admin_required</div><div class="line"></div><div class="line">+class Admin::OrdersController &lt; AdminController</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-class Admin::ProductsController &lt; ApplicationController</div><div class="line">-  layout &quot;admin&quot;</div><div class="line">-  before_action :authenticate_user!</div><div class="line">-  before_action :admin_required</div><div class="line"></div><div class="line">+class Admin::ProductsController &lt; AdminController</div></pre></td></tr></table></figure>
+<p>新增 admin_controller.rb 讓上述兩個controller來繼承<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class AdminController &lt; ApplicationController</div><div class="line">  layout &quot;admin&quot;</div><div class="line">  before_action :authenticate_user!</div><div class="line">  before_action :admin_required</div></pre></td></tr></table></figure></p>
+<h2 id="Service-Objectl："><a href="#Service-Objectl：" class="headerlink" title="Service Objectl："></a>Service Objectl：</h2><pre><code>- method邏輯極其複雜的時候
+- 跨Model使用，無法特別歸類於特定Model
+- 與外部服務有較多關連 - 並非重要功能
+- 同一種method有許多類似的使用方法
+</code></pre>
       
     </div>
 
@@ -329,13 +338,13 @@ Quick">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/10/26/Ruby-on-rails即戰力課程心得/" rel="next" title="Ruby on rails即戰力課程心得">
+                <i class="fa fa-chevron-left"></i> Ruby on rails即戰力課程心得
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/26/Rails即戰力課程第一週筆記/" rel="prev" title="Rails即戰力課程第一週筆記">
-                Rails即戰力課程第一週筆記 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -462,7 +471,7 @@ Quick">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#View"><span class="nav-number">1.</span> <span class="nav-text">View:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用系統的help-整理code"><span class="nav-number">1.1.</span> <span class="nav-text">利用系統的help,整理code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自己撰寫help-包裝html"><span class="nav-number">1.2.</span> <span class="nav-text">自己撰寫help, 包裝html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Partial"><span class="nav-number">1.3.</span> <span class="nav-text">Partial</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Controller、Model"><span class="nav-number">2.</span> <span class="nav-text">Controller、Model:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-Objectl："><span class="nav-number">2.1.</span> <span class="nav-text">Service Objectl：</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
