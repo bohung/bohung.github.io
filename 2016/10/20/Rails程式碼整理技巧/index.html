@@ -86,25 +86,22 @@
 
 
 
-<meta name="description" content="title: Rails程式碼整理技巧date: 2016-10-20 22:18:37
-tags:View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝原因：邏輯清楚，程式碼可以「自己敘述自己」
+<meta name="description" content="View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝原因：邏輯清楚，程式碼可以「自己敘述自己」
 常見需要用 Helper 包裝的地方:1.標題  2.敘述 3.連結 4.圖片 5.按鈕
-利用系統的help,整理code時間格式12&amp;lt;td&amp;gt;">
+利用系統的help,整理code時間格式12&amp;lt;td&amp;gt; &amp;lt;%= post.updated_at.to_s(:long) %&amp;gt; &amp;lt;/td&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Enver's Note">
+<meta property="og:title" content="Rails程式碼整理技巧">
 <meta property="og:url" content="https://bohung.github.io/2016/10/20/Rails程式碼整理技巧/index.html">
 <meta property="og:site_name" content="Enver's Note">
-<meta property="og:description" content="title: Rails程式碼整理技巧date: 2016-10-20 22:18:37
-tags:View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝原因：邏輯清楚，程式碼可以「自己敘述自己」
+<meta property="og:description" content="View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝原因：邏輯清楚，程式碼可以「自己敘述自己」
 常見需要用 Helper 包裝的地方:1.標題  2.敘述 3.連結 4.圖片 5.按鈕
-利用系統的help,整理code時間格式12&amp;lt;td&amp;gt;">
-<meta property="og:updated_time" content="2016-10-26T12:40:57.000Z">
+利用系統的help,整理code時間格式12&amp;lt;td&amp;gt; &amp;lt;%= post.updated_at.to_s(:long) %&amp;gt; &amp;lt;/td&amp;">
+<meta property="og:updated_time" content="2016-10-26T12:46:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Enver's Note">
-<meta name="twitter:description" content="title: Rails程式碼整理技巧date: 2016-10-20 22:18:37
-tags:View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝原因：邏輯清楚，程式碼可以「自己敘述自己」
+<meta name="twitter:title" content="Rails程式碼整理技巧">
+<meta name="twitter:description" content="View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝原因：邏輯清楚，程式碼可以「自己敘述自己」
 常見需要用 Helper 包裝的地方:1.標題  2.敘述 3.連結 4.圖片 5.按鈕
-利用系統的help,整理code時間格式12&amp;lt;td&amp;gt;">
+利用系統的help,整理code時間格式12&amp;lt;td&amp;gt; &amp;lt;%= post.updated_at.to_s(:long) %&amp;gt; &amp;lt;/td&amp;">
 
 
 
@@ -128,7 +125,7 @@ tags:View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊�
   <link rel="canonical" href="https://bohung.github.io/2016/10/20/Rails程式碼整理技巧/"/>
 
 
-  <title>  | Enver's Note </title>
+  <title> Rails程式碼整理技巧 | Enver's Note </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-tw">
@@ -261,7 +258,7 @@ tags:View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊�
             
             
               
-                
+                Rails程式碼整理技巧
               
             
           </h1>
@@ -301,8 +298,7 @@ tags:View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊�
       
 
       
-        <p>title: Rails程式碼整理技巧<br>date: 2016-10-20 22:18:37</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><h1 id="View"><a href="#View" class="headerlink" title="View:"></a>View:</h1><p><strong>寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝</strong><br>原因：邏輯清楚，程式碼可以「自己敘述自己」</p>
+        <h1 id="View"><a href="#View" class="headerlink" title="View:"></a>View:</h1><p><strong>寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝</strong><br>原因：邏輯清楚，程式碼可以「自己敘述自己」</p>
 <p>常見需要用 Helper 包裝的地方:<br>1.標題  2.敘述 3.連結 4.圖片 5.按鈕</p>
 <h2 id="利用系統的help-整理code"><a href="#利用系統的help-整理code" class="headerlink" title="利用系統的help,整理code"></a>利用系統的help,整理code</h2><p>時間格式<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:long) %&gt; &lt;/td&gt;</div><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:short) %&gt; &lt;/td&gt;</div></pre></td></tr></table></figure></p>
 <p>post 的 content 能自動斷行<br><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= simple_format(post.content) %&gt; &lt;<span class="regexp">/td&gt;</span></div></pre></td></tr></table></figure></p>
@@ -481,7 +477,7 @@ tags:View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags"><span class="nav-number">1.</span> <span class="nav-text">tags:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#View"><span class="nav-number"></span> <span class="nav-text">View:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用系統的help-整理code"><span class="nav-number">1.</span> <span class="nav-text">利用系統的help,整理code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自己撰寫help-包裝html"><span class="nav-number">2.</span> <span class="nav-text">自己撰寫help, 包裝html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Partial"><span class="nav-number">3.</span> <span class="nav-text">Partial</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Controller、Model"><span class="nav-number"></span> <span class="nav-text">Controller、Model:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-Objectl："><span class="nav-number">1.</span> <span class="nav-text">Service Objectl：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#View"><span class="nav-number">1.</span> <span class="nav-text">View:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用系統的help-整理code"><span class="nav-number">1.1.</span> <span class="nav-text">利用系統的help,整理code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自己撰寫help-包裝html"><span class="nav-number">1.2.</span> <span class="nav-text">自己撰寫help, 包裝html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Partial"><span class="nav-number">1.3.</span> <span class="nav-text">Partial</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Controller、Model"><span class="nav-number">2.</span> <span class="nav-text">Controller、Model:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-Objectl："><span class="nav-number">2.1.</span> <span class="nav-text">Service Objectl：</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

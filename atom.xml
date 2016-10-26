@@ -262,14 +262,13 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>Rails程式碼整理技巧</title>
     <link href="https://bohung.github.io/2016/10/20/Rails%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%95%B4%E7%90%86%E6%8A%80%E5%B7%A7/"/>
     <id>https://bohung.github.io/2016/10/20/Rails程式碼整理技巧/</id>
     <published>2016-10-20T14:18:37.000Z</published>
-    <updated>2016-10-26T12:40:57.000Z</updated>
+    <updated>2016-10-26T12:46:23.000Z</updated>
     
-    <content type="html"><![CDATA[<p>title: Rails程式碼整理技巧<br>date: 2016-10-20 22:18:37</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><h1 id="View"><a href="#View" class="headerlink" title="View:"></a>View:</h1><p><strong>寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝</strong><br>原因：邏輯清楚，程式碼可以「自己敘述自己」</p>
+    <content type="html"><![CDATA[<h1 id="View"><a href="#View" class="headerlink" title="View:"></a>View:</h1><p><strong>寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝</strong><br>原因：邏輯清楚，程式碼可以「自己敘述自己」</p>
 <p>常見需要用 Helper 包裝的地方:<br>1.標題  2.敘述 3.連結 4.圖片 5.按鈕</p>
 <h2 id="利用系統的help-整理code"><a href="#利用系統的help-整理code" class="headerlink" title="利用系統的help,整理code"></a>利用系統的help,整理code</h2><p>時間格式<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:long) %&gt; &lt;/td&gt;</div><div class="line">&lt;td&gt; &lt;%= post.updated_at.to_s(:short) %&gt; &lt;/td&gt;</div></pre></td></tr></table></figure></p>
 <p>post 的 content 能自動斷行<br><figure class="highlight rb"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;td&gt; &lt;%= simple_format(post.content) %&gt; &lt;<span class="regexp">/td&gt;</span></div></pre></td></tr></table></figure></p>
@@ -290,8 +289,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;title: Rails程式碼整理技巧&lt;br&gt;date: 2016-10-20 22:18:37&lt;/p&gt;
-&lt;h2 id=&quot;tags&quot;&gt;&lt;a href=&quot;#tags&quot; class=&quot;headerlink&quot; title=&quot;tags:&quot;&gt;&lt;/a&gt;tags:&lt;/h2&gt;&lt;h1 id=
+      &lt;h1 id=&quot;View&quot;&gt;&lt;a href=&quot;#View&quot; class=&quot;headerlink&quot; title=&quot;View:&quot;&gt;&lt;/a&gt;View:&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝&lt;/stro
     
     </summary>
     
