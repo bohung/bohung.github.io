@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+    
+    <entry>
+      <title><![CDATA[該如何達到流利寫作的目標？]]></title>
+      <url>https://bohung.github.io/2016/10/29/%E8%A9%B2%E5%A6%82%E4%BD%95%E9%81%94%E5%88%B0%E6%B5%81%E5%88%A9%E5%AF%AB%E4%BD%9C%E7%9A%84%E7%9B%AE%E6%A8%99%EF%BC%9F/</url>
+      <content type="text"><![CDATA[寫作其實就是輸出（流利寫作＝流利輸出） 善用 O R I D 思考框架法： Object：關於今天的課程，你記得了什麼？你完成了什麼？ （客觀）Reflective：形容今天的情緒 成就感與挫折感Interpretive：今天學到了什麼？重要的領悟是什麼？ （主觀）Decisional ：一句話形容今天的工作 哪先項目明天要繼續加強 其實所有寫的好的文章，架構嚴謹的論說文，都遵循著ＯＲＩＤ這四項原則 每天你觀察到了什麼你情緒是如何從中學到的領悟你要改善缺點是什麼 方法：每天寫日記，遵循上述原則，利用三個禮拜短時間內的記憶，在21天 的日子裡寫21篇文章。 短時間形成寫作與思考的肌肉記憶（毫不費力地對於現況進行紀錄反省與實踐） 這樣做的目的，有助於事實與看法分開，使腦子清晰的思考，清晰地表達，達到快速寫作的境界。 後記：在行為心理學上有一個理論是要養成一個原本沒有的習慣，需要21天， 換言之，要形成一個新的行為或習慣需要21天， 在21天之後就不用刻意提醒自己也會照著新的習慣做事。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Rails程式碼整理技巧]]></title>
+      <url>https://bohung.github.io/2016/10/26/Rails%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%95%B4%E7%90%86%E6%8A%80%E5%B7%A7/</url>
+      <content type="text"><![CDATA[View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝原因：邏輯清楚，程式碼可以「自己敘述自己」 常見需要用 Helper 包裝的地方:1.標題 2.敘述 3.連結 4.圖片 5.按鈕 利用系統的help,整理code時間格式12&lt;td&gt; &lt;%= post.updated_at.to_s(:long) %&gt; &lt;/td&gt;&lt;td&gt; &lt;%= post.updated_at.to_s(:short) %&gt; &lt;/td&gt; post 的 content 能自動斷行1&lt;td&gt; &lt;%= simple_format(post.content) %&gt; &lt;/td&gt; 標題太長就斷行用 …… 來顯示1&lt;td&gt; &lt;%= link_to(truncate(group.title, length: 15 ), group_path(group)) %&gt; &lt;/td&gt; 自己撰寫help, 包裝html123def render_post_content(post) simple_format(truncate(post.content, lenth: 100)) #內容斷行,只顯示頭一百字end PartialController、Model:繼承、混入(module)如果 Model 超過 3 個 PageDown, 拆 Module如果 Controller 每個 action 都有重複的 code, 使用 before_action 如果多個 Controller 有同樣的少樣幾行 action，可以利用繼承來整理code 123456-class Admin::OrdersController &lt; ApplicationController- layout `&lt;blink&gt;` &quot;admin&quot;- before_action :authenticate_user!- before_action :admin_required+class Admin::OrdersController &lt; AdminController 123456-class Admin::ProductsController &lt; ApplicationController- layout &quot;admin&quot;- before_action :authenticate_user!- before_action :admin_required+class Admin::ProductsController &lt; AdminController 新增 admin_controller.rb 讓上述兩個controller來繼承1234class AdminController &lt; ApplicationController layout &quot;admin&quot; before_action :authenticate_user! before_action :admin_required Service Objectl：- method邏輯極其複雜的時候 - 跨Model使用，無法特別歸類於特定Model - 與外部服務有較多關連 - 並非重要功能 - 同一種method有許多類似的使用方法]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Ruby on rails即戰力課程心得]]></title>
+      <url>https://bohung.github.io/2016/10/26/Ruby-on-rails%E5%8D%B3%E6%88%B0%E5%8A%9B%E8%AA%B2%E7%A8%8B%E5%BF%83%E5%BE%97/</url>
+      <content type="text"><![CDATA[人生真得有許多奇妙與巧合的事情，用個貼切的形容詞來說，我想是緣份吧！沒有程式底子的我，買了一本書，利用下班後的時間，靠著自學Javascript學得很辛苦。我在2016年2月27日認識丁丁，他當時以初學者為對象，教學PHP程式設計課程，他在4/3號臉書上表明想要教學初探rails，而我是在做倉管一職的工作，對初探rails這名詞感到好奇，我隨即與丁丁表明想學。從他口中間接得知Xdite在四月份開了高雄rails即戰力的課程，高雄場錯過這次要再等半年，因為報名已經截止，我思索了幾天，隨即寄信給Xdite說：再過幾天4/8就要開課，而我現在才知道有這課程，現在報名還來得急嗎？而她給我的忠告是“如果你先練完 Rails 101 三遍的話，可以先來第一堂試看看。不然後天就開始上課了。我怕你來不及完成準備會很挫折”。心裡頭想的是這講師真好，如此與眾不同，願意讓我免費試聽第一堂課;想給自己一個挑戰的機會，高雄rails班4/8號開課在即，我跟公司告假，拼命的練習rails101，心急如焚的我遇到很多bug，丁丁在這段期間幫助我很多，仿佛給了我一把鑰匙，進入這廣大的RoR雲海，帶著我一步步在我mac上環境設定，跑初探rails，幫我debug分析原因，最後在上課前夕，我終於完成了一次的練習。 戰戰兢兢的上完第一堂課程，原本擔心自己會聽不懂，卻發覺自己跟得上進度，課程短暫卻很充實，有別於一般的授課方式，深深吸引著我，對比幾天前的一知半解，到現在矇懞懂懂，發現自己對於ROR產生了莫大的熱情，加上看了Xdite的blog:其實，你應該學會的是賺錢！由於我工作月休僅只有七天，課程給的資源很多，初學者的我消化很慢，我萌生一個念頭，我想為我的人生旅途添加點色彩，我毅然決然的辭去工作，此時此刻起我的人生開始變得不一樣。曉得自己能力的不足，心底暗自告訴自己絕不能錯過office hour以及meetup，即便時間僅有3小時，但有助教的幫忙，成長快了許多，在此也要感謝助教無私的奉獻！了解到幫助他人，能夠找到自己的盲點，補足自己不足的地方，更是讓自己進步的方式之一，如果當我具備足夠的能力時，我也要回饋給別人。 我幾乎天天都去Eagle練習，很快地做完課程進度，卻似懂非懂，我想起Xdite的教學理念：肌肉式學習法，我花了大量的時間，不斷的練習與理解，反反覆覆好幾回，當然也遇到很大的撞牆期，試著讓自己渴望的熱情佔據心理。漸漸地發現自己似乎有學到東西，漸漸的我意識到一個重點，rails即戰力班給了我一個機會，一張快速進入Ruby on rails門票的機會，從“做中學，學中做”當中明瞭我該如何走在正確的學習道路上，至於課程結束後，還有很多自己要惡補的知識與技能。未來想從事rails developer的工作，不斷鞭策自己，期望短時間內能有很大的進步，並且盡快的找到rails的工作能持續精進自己;很感謝Xdite開了這門課，且不斷的更改課程以符合最適切的想法，也很高興她把求職攻略獨立成一個章節，對於程式零底子，猶如一張白紙的我很大的助力，大幅縮減了我起步的速度與改變了我出發的方向，至於要走的多遠多廣，還得仰賴自己的學習能力，畢竟成功不是鮮花堆砌成的牌樓，而是血汗凝聚的長城。 勉勵自己的話語李安：既然是自己相信的東西，就要堅持;始終守著你的心願，就會實現。奧運格言：奧運的重點不在於獲勝，而是參與;人生的要領不在於征服，而是全力以赴。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[SEO技巧(Search Engine Optimization)]]></title>
+      <url>https://bohung.github.io/2016/10/26/SEO%E6%8A%80%E5%B7%A7-Search-Engine-Optimization/</url>
+      <content type="text"><![CDATA[SEO原則：&gt; 幫網頁畫重點Html Tag： - H1大標（一頁只能有一個）、H2中標（一頁2或3個）、H3小標（6～10個） - P：文章 - Strong：強調重點 - image &quot;alt&quot;：取代圖片的文字 Meta： - title：建立獨特、準確的網頁標題 - meta description：敘述本頁的內容，字數控制在100字內。 - meta keywords：敘述本頁的關鍵字 權重：依序遞減 - title - data description - h1 - h2 - h3 - Strong - P 工具： -Google Webmaster：它會告訴你哪裡扣分，具體告訴你它懷疑你哪裡作弊。 -gem”seo_helper”：具體告訴你它懷疑你哪裡作弊 豆知識：div(塊級元素) span(行內元素)，對於SEO沒有幫助]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Rails即戰力課程第四週筆記]]></title>
+      <url>https://bohung.github.io/2016/10/26/Rails%E5%8D%B3%E6%88%B0%E5%8A%9B%E8%AA%B2%E7%A8%8B%E7%AC%AC%E5%9B%9B%E9%80%B1%E7%AD%86%E8%A8%98/</url>
+      <content type="text"><![CDATA[請列出五條 Yahoo Frontend Best Performance 最佳實務Put Stylesheets at the Top(CSS)/Put Scripts at the Bottom(Javascript)把CSS放置於網頁上方/把Javascript放置於網站下方，Script文件所造成的效能問題在於，下載Script時會阻斷其他並行的檔案下載，而直到Script文件下載完畢前，都不會下載網頁中的其他物件。 原理在於CSS要先出來，才能美化網頁，通常是放在head優先下載，JavaScript 幾乎都是等 HTML 跑完再執行，所以挪到後面再下載。 Minimize HTTP Requests (Content)藉由減少HTTP請求數量來調校網站的執行效能是個不錯的開始，Combined files方法是透過將所有Script整合成一份Script，達到減少HTTP請求數量的目的，如網站中所有需要的CSS都彙整成一份CSS檔案，HTTP就可以減少為一次，減少Response時間，但當每個網頁所需要的CSS或Script不同時，就會增加實作上的難度。1假設我們網頁上有 10 隻 CSS。每下載一個檔案，都會需要「發出下載請求」，即會有 10 倍「發出下載請求的時間」，不如打包成一隻 CSS 下載。比較省時。 Use a Content Delivery Network(Server)content delivery network (CDN) 是透過分散各地儲存相同內容的web server更有效率傳送相關內容到用戶端，通常都依據用戶端所在計算選用對應的web server來發送內容，例如選用透過較少的network hops或是具最快response time的web server。CDN加速：1如果我們的機器在美國，在台灣開網站靜態網站會下載很慢，因為我們要從美國下載檔案到台灣，應該台灣這邊要有副本可以直接下載。 Split Components Across Domains當使用者瀏覽網站時，一個頁面上的檔案有很多需要被下載，HTTP Potocol對同一個 host : artstore.com 同時下載數量有限，可以切成不同的網域加速下載。1234config.action_controller.asset_host = “http://assets%d.artstore.com&quot;assets01.artstore.comassets02.artstore.comassets03.artstore.com Gzip Components(server)一般而言，傳送HTTP請求到取得回應所花費的時間可由前端上做大幅度的改善，當然其他因素如：使用者的網路頻寬速度、網際網路服務商等等也會造成影響，但這些都不在開發團隊的管轄，但還有其他變數，像是壓縮(Compression)可縮小HTTP請求的檔案大小進一步減少Response time。 從HTTP/1.1開始，在HTTP請求中加入Accept-Encoding header可使Client端可支援壓縮，指令如下：Accept-Encoding: gzip, deflate 當Server端接收到含有此header的請求，就會使用Client端指定的方式中選定一個執行壓縮，而Server端則在回應加入一行Content-Encoding header 指令：Content-Encoding: gzip Gzip是目前最常見與最具效率的壓縮方式，一般而言可減少約70％左右的response檔案大小，現今聲稱90%網路中透過瀏覽器傳送的請求與回應都支援Gzip。 Server根據檔案類型決定是否做Gzip，大多數網站對HTML文件做Gzip，包含scripts, stylesheet或是其他text response像是XML, JSON，而對image與PDF則不做Gzip，因為這些檔案本身已經做過壓縮。 盡可能對可執行Gzip的文件實作Gzip是一種簡單降低page weight與提升使用者體驗的方式。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Rails即戰力課程第三週筆記]]></title>
+      <url>https://bohung.github.io/2016/10/26/Rails%E5%8D%B3%E6%88%B0%E5%8A%9B%E8%AA%B2%E7%A8%8B%E7%AC%AC%E4%B8%89%E9%80%B1%E7%AD%86%E8%A8%98/</url>
+      <content type="text"><![CDATA[請講解 「繼承」這個觀念：Inheritance（繼承）的意思就是繼承者擁有被繼承者的特性，用於類別(class)的繼承，所以子類別可以呼叫父類別的方法。 為什麼 Rails 要分 production, test, development 三種環境？ 不同環境的差異在於有不同的設定，除了資料庫設定 database.yml 裡分開設定之外，個別的環境設定放在 config/environments/development.rb、config/environments/test.rb 和 config/environments/production.rb，它們可以有不同的 Log 層級、Session 設定、Email 設定等等。 development environment 開發模式，用在你的開發的時候。 使用 Rails 開發可以快速的原因之一，就是當你修改一個小東西，只要重新整理瀏覽器就可以馬上看到修改後的結果。這個秘訣就在於 cache_classes = false 會讓每一次的 HTTP 請求都重新載入類別檔案。更仔細的說，當這個值是 false 的時候，Rails 會改用 Ruby 的 load 方法，每次執行都會重新載入一次。Rails只有在連線是來自本地端的時候，才會將發生錯誤時的Call stack trace資訊給瀏覽器顯示。這個設定將所有連線都當做本地端連線，好讓開發模式時所有人連線都可以看到錯誤訊息。 test environment 測試模式，用在自動測試時。 不同於 development 或 production 在test模式，碰到例外會直接出現，出錯時瀏覽器不會顯示出 call stack trace 或 public/500.html 畫面。 production environment 正式上線模式，用在實際的上線運作環境。 cache_classes = true 表示在 production 中，類別檔案載入進記憶體中就快取起來了，效能提升。不像在 development 環境中每一次 HTTP 請求就會重新載入一次。不同於 development，如果在 production 環境出現例外錯誤，不會顯示程式 call stack 訊息，而是回傳 public/500.html 頁面。 請玩 delayed_job 與 sidekiq 兩套 gem, 解釋他們的差異：Sidekiq：利用 redis: key-value 來儲存要執行的任務去儲存work 然後去執行他。delay_job：新增一個table把 work 丟進去執行。相對來說 delay_job 不管是在local 還是heroku是非常容易操作及安裝的！ 什麼時機要用 Helper, 什麼時機要用 Partial？Partial： - 檔案裡 HTML 超過兩頁（long template） - HTML 內容高度重複（highly duplicated） - 可獨立作為功能區塊（independent blocks） Helper： - 產生的 HTML code 需要與原始程式碼進行一些邏輯混合，但不希望 View 裡面搞得太複雜。 - 需要與 Rails 內建預設好的一些方便 Helper 交叉使用。 conclusion： - partial 負責處理大片的 HTML code，或是之後要利用 ajax render 出來的片段。 - helper 則負責處理跟邏輯判斷有關的東西。 什麼時候要用 Service Object？顧名思義，Service Object是因為有某些類似的特定功能，像是一個『service』，跟資料庫中的model並無直接關係，因此拉出來獨立成為一個class，在邏輯上會更容易管理。 - method邏輯極其複雜的時候 - 跨Model使用，無法特別歸類於特定Model - 與外部服務有較多關連 - 並非重要功能 - 同一種method有許多類似的使用方法]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Rails即戰力課程第二週筆記]]></title>
+      <url>https://bohung.github.io/2016/10/26/Rails%E5%8D%B3%E6%88%B0%E5%8A%9B%E8%AA%B2%E7%A8%8B%E7%AC%AC%E4%BA%8C%E9%80%B1%E7%AD%86%E8%A8%98/</url>
+      <content type="text"><![CDATA[before_action 的使用時機： before_action 是什麼？定義在進入Action之前，執行特定的方法，用以減少controller裡面重複的程式碼。Rails在run controller下的 action 前要先跑指定的method。 為什麼要用 before_action？目的在於簡化程式碼，以利程式碼的可讀性和加快程式執行的速度。 如何使用 before_action？在controller裡面，所有方法定義Ｍethods之前使用。 1before_action :authenticate_user! only: [:edit] 程式碼在執行methods之前會先執行身份驗證的機制，可以利用only,except此兩個關鍵字來限定哪些Action要執行，上述程式碼僅有edit所定義的方法才會執行身份驗證。 session 與 cookie 的差別： 什麼是 session 跟 cookie？ 看演唱會或是去遊樂園玩常常會發生一種情況，就是入場以後要暫時出場，這時候工作人員通常會給你蓋個手章，用來註記你曾經入場過，基本上 Cookies 的功用就是這個手章，只要使用者進到我們的網站，我們就幫他儲存一個 Cookies ，下次當使用者再度造訪時我們就可以由 Cookies 得知使用者的資訊。有些遊樂園的手章上會標記當天的入園時間，以免有人回家不洗澡隔天又來玩一次，而 cookies 記錄這個時間的方法就是以 key/value 的形式儲存在使用者的瀏覽器中，但 Cookies 屬於沒有加密的公開檔案，所以不建議儲存敏感資料。 相較於 Cookies 存在 Client 端， Session 則是存在 Server 的資料，通常與 Cookies 相呼應。當使用者造訪我們的網站時，我們由伺服器產生 session id (32 byte long MD5 hash value)，並傳送存有這個 session id 的 cookie 給瀏覽器儲存，之後使用者造訪我們網站時，只需要比對 cookies 上的 session id 和 session 裡的 session id 就可以知道使用者身份，大部份的網站也是運用此原理實作儲存 User 登入狀態的機制。這樣做的好處是若有人劫取到使用者的 Cookies 資料也無法得知資料內容，但是仍有 Hijacking 攻擊的疑慮。 為什麼要用 session 跟 cookie？用來儲存資料的手段，常用來作為使用者是否登入的方法。 Rails 內如何操作 session?在 Rails 內只要用 session[:session_name]的 instance method 就可以取得 session 的特定資料了。若要新增或是覆蓋現有的 session 資料，只要用session[:session_name] = ＹＹＹ就可以了若要刪除特定的 session 值，只要下session_delete(:session_name) 狀態機： 什麼是狀態機？可以透過aasm狀態機去做物件狀態的切換，在EC網站下就是去管理及切換已下單,已付款,已出貨,出貨中,退貨,取消訂單等狀態。 為什麼要使用狀態機去設計訂單狀態？避免手動操作狀態而使狀態混亂，在設定好的規則下讓狀態機來做狀態的管理及切換。 如何在 Rails 內設計狀態機機制？(以Ec-shop網站為例) 安裝 gem &quot;aasm&quot; order 新增 aasm_state 欄位 設定訂單狀態機制 用 AASM 的機制設定訂單付款 如何讓 strong_parameter 接受 nested_attributes：step 1:在Model中，宣告我們可以接受的Attributes。 （model:Photo.rb,Product.rb）step 2:在Controller中，指定接受的Attributes。 （products_controller.rb） board has_many posts, 新造物件宣告方式是： @post = @boards.posts.build 。那如果 book has_one :author，請問要怎麼宣告？@author=@book.build.author after_create 是一種 model callbacks, 請問 model 有多少種 call backs 請列出來 before_validation before_create before_save after_validation after_create after_save after_commit (in controller ) render 與 redirect_to 的差異：render: 不執行action，不改變url的狀態下，直接套用某一個view。redirect_to:會執行指定頁面的controller action，直接轉址到某個url。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Rails即戰力課程第一週筆記]]></title>
+      <url>https://bohung.github.io/2016/10/26/Rails%E5%8D%B3%E6%88%B0%E5%8A%9B%E8%AA%B2%E7%A8%8B%E7%AC%AC%E4%B8%80%E9%80%B1%E7%AD%86%E8%A8%98/</url>
+      <content type="text"><![CDATA[User Stroy: user story 是什麼：User stories 是一種非常好用且容易上手的需求文件，它是一種極簡主義，只要求寫下最有價值不要忘記的東西，而且夠讓我們足以估計時程以及與客戶溝通。簡單來說就是使用者期待系統解決的問題與希望從系統獲得之資訊。 為什麼我們要用 user story：透過使用者故事的方式，以客戶面向為主體，開發者與客戶不斷地溝通，才能找到真正的需求，且正確的開發方式。作為開發者我們可以協助撰寫和提供建議，但是這應該是客戶的責任。 如何使用 user story： 身為一個 ，我希望能有 以便能讓我 As a (role of user), I want (some feature) so that (some business value). 資訊系統開發人員與使用者以及高階管理者需有高度的互動，以利釐清開發的方向及提升需求分析的效率與效能，作為後續系統設計和導入的濫觴。 routing 的 namespace： namespace 是什麼？Namespace是Scope的一種特定應用，特別適合例如後台介面。目的在避免大家使用同樣的名稱為類別，物件命名的一種機制。舉例來說，如果大家剛好都有一個叫做 Animal 的類別或是 Flyable 的模組，放在同一個專案裡就衝突了。所以 Ruby 有設計 namespace 來解決這個問題。 為什麼我們要用 namespace？namespace主要的功能就是為相同名稱的東西做出區隔、或是分類。 如何使用 namespace?在Rails裡最常見的就是把管理用的Controller放到admin下面，假使我們有兩組Controller都叫做ProductsController，但一個是設計給系統管理員用，一個是給一般使用者用，若我們把系統管理員用的放到Admin下面就可以輕易區分出哪個是哪個了。 strong parameter： strong parameter 是什麼？Rails 的 Form 綁 Model 設計非常直觀直覺，表單欄位直接對應到 Model 欄位。但也因此，容易被 Hack 猜中關鍵欄位的慣例，在瀏覽器自造欄位入侵測試，因而產生安全疑慮。在 Rails 4 時，維護團隊發明一套方法能夠有效地解決這個問題。這套機制就是 Strong Parameters(合法參數）。 為什麼我們要用 strong parameter？利用合法參數來建立白名單的機制，以確保資訊安全，避免機密資訊外流。 如何使用 strong parameter？語法：params.require(:model_name).permit(:欄位_1, :欄位_2)Strong Parameters 的想法是若參數沒有被允許，就是非法欄位，無法被直接送進 create / update method 更新，若試圖傳入未允許的欄位，會拋 ActiveModel::ForbiddenAttributesError 錯誤。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>https://bohung.github.io/2016/10/19/hello-world/</url>
+      <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    </entry>
+
+    
+  
+  
+</search>
