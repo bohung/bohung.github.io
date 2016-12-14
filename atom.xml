@@ -34,9 +34,9 @@
     <link href="https://bohung.github.io/2016/11/09/HTML%E3%80%81CSS/"/>
     <id>https://bohung.github.io/2016/11/09/HTML、CSS/</id>
     <published>2016-11-09T07:56:44.000Z</published>
-    <updated>2016-12-14T08:32:17.000Z</updated>
+    <updated>2016-12-14T08:34:38.000Z</updated>
     
-    <content type="html"><![CDATA[<p>vertical-align: middle<br>display: inline-block</p>
+    <content type="html"><![CDATA[<p>vertical-align: middle<br>display: inline-block   #與float效果一樣</p>
 <p>.menu:hover {<br>  滑鼠移過去會產生而外效果<br>}</p>
 <p>margin: 0 auto; #置中<br>float: left;    #靠右對齊<br>float: right;   #靠右對齊<br>clear: both;    #清除浮動</p>
 <p>diplay: block; #行內元素轉變成區塊元素<br>text-align: center;     #文字水平置中<br>line-height: 高度一樣px; #垂直置中<br>text-decoration: none;  #刪除文字下底線</p>
@@ -54,9 +54,9 @@
     
     <summary type="html">
     
-      &lt;p&gt;vertical-align: middle&lt;br&gt;display: inline-block&lt;/p&gt;
+      &lt;p&gt;vertical-align: middle&lt;br&gt;display: inline-block   #與float效果一樣&lt;/p&gt;
 &lt;p&gt;.menu:hover {&lt;br&gt;  滑鼠移過去會產生而外效果&lt;br&gt;}&lt;/p&gt;
-&lt;p&gt;margin: 0 auto; #置中&lt;br&gt;float: left;   
+&lt;p&gt;margin: 0 auto; #置中&lt;br&gt;f
     
     </summary>
     
