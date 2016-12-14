@@ -4,6 +4,20 @@
   
     
     <entry>
+      <title><![CDATA[Capistrano Deploy with DigitalOcean]]></title>
+      <url>https://bohung.github.io/2016/11/13/Capistrano%20Deploy%20with%20DigitalOcean/</url>
+      <content type="text"></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[HTML、CSS]]></title>
+      <url>https://bohung.github.io/2016/11/09/HTML%E3%80%81CSS/</url>
+      <content type="text"><![CDATA[vertical-align: middleinline-block .menu:hover { 滑鼠移過去會產生而外效果} margin: 0 auto; #置中float: left; #靠右對齊float: right; #靠右對齊clear: both; #清除浮動 是區塊元素 是行內元素diplay: block; #行內元素轉變成區塊元素text-align: center; #文字水平置中line-height: 高度一樣px; #垂直置中text-decoration: none; #刪除文字下底線 background-image: url(../img/background.png)background-repeat: repeat-x;background-color: #色碼;background-position: right bottom # X軸 Ｙ軸 可用 px or %google:hexadecimal color picker #色碼查詢https://subtlepatterns.com #背景圖片下載 圖片取代文字：text-indent: 101%; #首行縮排overflow: hidden; #隱藏超出的東西white-space: nowrap; #不要斷行 圖片副檔名介紹：.gif # 動態效果圖片 支援透明背景 只支援256色.jpeg # 無動畫效果 不支援透明背景 預設是白色背景.png-8 # 支援256色 有透明效果.png-24 # 色系較豐富 有透明效果 列 標題欄 預設是粗體 內容欄solid = 實心線條boder-top: 1px solid #000;boder-bottom: 1px solid #000; cursor: pointer; #指標變成手的圖案 電子郵件： 電子郵件： 性別 男生 女生 興趣 看電影 聽音樂 閱讀 生日： 1989 1990 內容： http://purecss.io # CSS框架參考 http://www.w3schools.com/css/css3_gradients.asp如果指令無法作動，表示該瀏覽器不支援，請參閱上述網站，加入適當的前綴詞。 CSS3 圓弧效果：border-radius: 左上 右上 右下 左下; 50%; #圓弧效果 50%為圓型CSS3 漸層效果：background: linear-gradient(color1,color2) #由上到下CSS3 漸層效果：background: linear-gradient(left,color1,color2) #由左到右CSS3 Box 陰影：box-shadow: 10px 10px 5px gray; (X軸,Y軸,柔焦,顏色)http://caniuse.com (查詢指令與瀏覽器之間相容度)http://gs.statcounter.com (查詢瀏覽器市佔率) CSS權重：id(#) -&gt; 100分, html style -&gt; 1000分, class -&gt; 10分, html -&gt; 1分, !important -&gt; 10000分 head 常用語法： HTML、CSS教學]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[該如何達到流利寫作的目標？]]></title>
       <url>https://bohung.github.io/2016/10/29/%E8%A9%B2%E5%A6%82%E4%BD%95%E9%81%94%E5%88%B0%E6%B5%81%E5%88%A9%E5%AF%AB%E4%BD%9C%E7%9A%84%E7%9B%AE%E6%A8%99%EF%BC%9F/</url>
       <content type="text"><![CDATA[寫作其實就是輸出（流利寫作＝流利輸出） 善用 O R I D 思考框架法：Object：關於今天的課程，你記得了什麼？你完成了什麼？ （客觀）Reflective：形容今天的情緒，成就感與挫折感！Interpretive：今天學到了什麼？重要的領悟是什麼？ （主觀）Decisional ：一句話形容今天的工作！哪些項目明天要繼續加強？ 其實所有寫的好的文章，架構嚴謹的論說文，都遵循著ＯＲＩＤ這四項原則：每天你觀察到了什麼你的情緒是如何從中學到的領悟你要改善缺點是什麼 方法：每天寫日記，遵循上述原則，利用三個禮拜短時間內的記憶，在21天的日子裡寫21篇文章。這樣做的目的，有助於腦袋瓜把事實與看法分開，使腦子清晰的思考，清晰地表達，達到快速寫作的境界。 短時間形成寫作與思考的肌肉記憶（毫不費力地對於現況進行紀錄反省與實踐） 後記：在行為心理學上有一個理論，養成一個原本沒有的習慣，需要21天，換言之，要形成一個新的行為或習慣需要21天，在21天之後就不用刻意提醒自己也會照著新的習慣做事。]]></content>
@@ -13,7 +27,7 @@
     <entry>
       <title><![CDATA[Rails程式碼整理技巧]]></title>
       <url>https://bohung.github.io/2016/10/26/Rails%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%95%B4%E7%90%86%E6%8A%80%E5%B7%A7/</url>
-      <content type="text"><![CDATA[View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝原因：邏輯清楚，程式碼可以「自己敘述自己」 常見需要用 Helper 包裝的地方:1.標題 2.敘述 3.連結 4.圖片 5.按鈕 利用系統的help,整理code時間格式12&lt;td&gt; &lt;%= post.updated_at.to_s(:long) %&gt; &lt;/td&gt;&lt;td&gt; &lt;%= post.updated_at.to_s(:short) %&gt; &lt;/td&gt; post 的 content 能自動斷行1&lt;td&gt; &lt;%= simple_format(post.content) %&gt; &lt;/td&gt; 標題太長就斷行用 …… 來顯示1&lt;td&gt; &lt;%= link_to(truncate(group.title, length: 15 ), group_path(group)) %&gt; &lt;/td&gt; 自己撰寫help, 包裝html123def render_post_content(post) simple_format(truncate(post.content, lenth: 100)) #內容斷行,只顯示頭一百字end PartialController、Model:繼承、混入(module)如果 Model 超過 3 個 PageDown, 拆 Module如果 Controller 每個 action 都有重複的 code, 使用 before_action 如果多個 Controller 有同樣的少樣幾行 action，可以利用繼承來整理code 123456-class Admin::OrdersController &lt; ApplicationController- layout `&lt;blink&gt;` &quot;admin&quot;- before_action :authenticate_user!- before_action :admin_required+class Admin::OrdersController &lt; AdminController 123456-class Admin::ProductsController &lt; ApplicationController- layout &quot;admin&quot;- before_action :authenticate_user!- before_action :admin_required+class Admin::ProductsController &lt; AdminController 新增 admin_controller.rb 讓上述兩個controller來繼承1234class AdminController &lt; ApplicationController layout &quot;admin&quot; before_action :authenticate_user! before_action :admin_required Service Objectl：- method邏輯極其複雜的時候 - 跨Model使用，無法特別歸類於特定Model - 與外部服務有較多關連 - 並非重要功能 - 同一種method有許多類似的使用方法]]></content>
+      <content type="text"><![CDATA[View:寫 View 時，可以預見需要裝飾的字串（複雜邏輯區塊）使用 Helper(全域變數) 包裝原因：邏輯清楚，程式碼可以「自己敘述自己」 What is helper? View 中整理 Html 的一些小方法 用Ruby code 整理常見的 view 功能 常見需要用 Helper 包裝的地方:1.標題 2.敘述 3.連結 4.圖片 5.按鈕 利用系統的help,整理code時間格式12&lt;td&gt; &lt;%= post.updated_at.to_s(:long) %&gt; &lt;/td&gt;&lt;td&gt; &lt;%= post.updated_at.to_s(:short) %&gt; &lt;/td&gt; post 的 content 能自動斷行1&lt;td&gt; &lt;%= simple_format(post.content) %&gt; &lt;/td&gt; 標題太長就斷行用 …… 來顯示1&lt;td&gt; &lt;%= link_to(truncate(group.title, length: 15 ), group_path(group)) %&gt; &lt;/td&gt; 自己撰寫help, 包裝html123def render_post_content(post) simple_format(truncate(post.content, lenth: 100)) #內容斷行,只顯示頭一百字end PartialController、Model:繼承、混入(module)如果 Model 超過 3 個 PageDown, 拆 Module如果 Controller 每個 action 都有重複的 code, 使用 before_action 如果多個 Controller 有同樣的少樣幾行 action，可以利用繼承來整理code 123456-class Admin::OrdersController &lt; ApplicationController- layout `&lt;blink&gt;` &quot;admin&quot;- before_action :authenticate_user!- before_action :admin_required+class Admin::OrdersController &lt; AdminController 123456-class Admin::ProductsController &lt; ApplicationController- layout &quot;admin&quot;- before_action :authenticate_user!- before_action :admin_required+class Admin::ProductsController &lt; AdminController 新增 admin_controller.rb 讓上述兩個controller來繼承1234class AdminController &lt; ApplicationController layout &quot;admin&quot; before_action :authenticate_user! before_action :admin_required Service Objectl：- method邏輯極其複雜的時候 - 跨Model使用，無法特別歸類於特定Model - 與外部服務有較多關連 - 並非重要功能 - 同一種method有許多類似的使用方法]]></content>
     </entry>
 
     
